@@ -1,0 +1,873 @@
+/* =========================================================
+   POS Tienda — Hoja de estilos principal
+   Diseño moderno, limpio y ligeramente kawaii
+   ========================================================= */
+
+:root {
+    --pos-primary: #7c6cf2;
+    --pos-primary-dark: #6355e0;
+    --pos-primary-soft: #efecfe;
+    --pos-accent: #ff8fab;
+    --pos-accent-soft: #ffeef3;
+    --pos-mint: #56d6bd;
+    --pos-mint-soft: #e4faf5;
+    --pos-warning-soft: #fff4dc;
+    --pos-bg: #f5f4fb;
+    --pos-surface: #ffffff;
+    --pos-text: #3b3854;
+    --pos-text-muted: #8b88a3;
+    --pos-border: #ecebf5;
+    --pos-radius: 1rem;
+    --pos-shadow: 0 10px 30px rgba(88, 76, 180, 0.08);
+    --pos-sidebar-width: 250px;
+}
+
+* {
+    font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--pos-bg);
+    color: var(--pos-text);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fw-extrabold {
+    font-weight: 800;
+}
+
+/* ===================== LAYOUT ===================== */
+
+.pos-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.pos-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--pos-sidebar-width);
+}
+
+.pos-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+/* ===================== SIDEBAR ===================== */
+
+.pos-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--pos-sidebar-width);
+    background: var(--pos-surface);
+    border-right: 1px solid var(--pos-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1040;
+    transition: transform 0.25s ease;
+}
+
+.pos-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.25rem 1rem;
+}
+
+.pos-brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--pos-primary), var(--pos-accent));
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 6px 16px rgba(124, 108, 242, 0.35);
+    flex-shrink: 0;
+}
+
+.pos-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.pos-brand-text strong {
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+.pos-brand-text small {
+    color: var(--pos-text-muted);
+    font-size: 0.72rem;
+}
+
+.pos-nav {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.pos-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.75rem;
+    color: var(--pos-text);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: all 0.18s ease;
+}
+
+.pos-nav-link i {
+    font-size: 1.1rem;
+    color: var(--pos-primary);
+    width: 22px;
+    text-align: center;
+}
+
+.pos-nav-link:hover {
+    background: var(--pos-primary-soft);
+    transform: translateX(3px);
+}
+
+.pos-nav-link.active {
+    background: linear-gradient(135deg, var(--pos-primary), var(--pos-primary-dark));
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(124, 108, 242, 0.35);
+}
+
+.pos-nav-link.active i {
+    color: #fff;
+}
+
+.pos-sidebar-footer {
+    padding: 1rem 1.25rem;
+    color: var(--pos-text-muted);
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-top: 1px dashed var(--pos-border);
+}
+
+.pos-sidebar-overlay {
+    display: none;
+}
+
+/* ===================== NAVBAR ===================== */
+
+.pos-navbar {
+    background: var(--pos-surface);
+    border-bottom: 1px solid var(--pos-border);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.pos-page-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.pos-date {
+    color: var(--pos-text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: var(--pos-bg);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+}
+
+.pos-btn-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--pos-border);
+    background: var(--pos-surface);
+    color: var(--pos-text);
+    font-size: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pos-user {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--pos-text);
+    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    border-radius: 999px;
+    transition: background 0.18s ease;
+}
+
+.pos-user:hover {
+    background: var(--pos-primary-soft);
+}
+
+.pos-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pos-accent), #ffb7c9);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pos-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    text-align: left;
+}
+
+.pos-user-info strong {
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.pos-user-info small {
+    font-size: 0.72rem;
+    color: var(--pos-text-muted);
+}
+
+.pos-user-menu {
+    border: none;
+    box-shadow: var(--pos-shadow);
+    border-radius: 0.9rem;
+    overflow: hidden;
+}
+
+/* ===================== TARJETAS / PANELS ===================== */
+
+.pos-card {
+    background: var(--pos-surface);
+    border: 1px solid var(--pos-border);
+    border-radius: var(--pos-radius);
+    box-shadow: var(--pos-shadow);
+    padding: 1.15rem;
+}
+
+.pos-card-title {
+    font-size: 1rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.pos-card-title i {
+    color: var(--pos-primary);
+}
+
+/* Tarjetas del dashboard */
+
+.pos-stat {
+    background: var(--pos-surface);
+    border: 1px solid var(--pos-border);
+    border-radius: var(--pos-radius);
+    box-shadow: var(--pos-shadow);
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    transition: transform 0.18s ease;
+}
+
+.pos-stat:hover {
+    transform: translateY(-4px);
+}
+
+.pos-stat-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.pos-stat-icon.purple { background: var(--pos-primary-soft); color: var(--pos-primary); }
+.pos-stat-icon.pink { background: var(--pos-accent-soft); color: var(--pos-accent); }
+.pos-stat-icon.mint { background: var(--pos-mint-soft); color: #1eb89d; }
+.pos-stat-icon.amber { background: var(--pos-warning-soft); color: #e8a13c; }
+.pos-stat-icon.red { background: #ffe9e9; color: #ef6b6b; }
+.pos-stat-icon.blue { background: #e7f1ff; color: #4d8ff0; }
+
+.pos-stat-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.pos-stat-info .label {
+    color: var(--pos-text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.pos-stat-info .value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+/* ===================== BOTONES ===================== */
+
+.btn,
+.form-control,
+.form-select,
+.input-group-text {
+    border-radius: 0.65rem;
+}
+
+.btn {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.pos-btn-primary {
+    background: linear-gradient(135deg, var(--pos-primary), var(--pos-primary-dark));
+    border: none;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(124, 108, 242, 0.3);
+}
+
+.pos-btn-primary:hover,
+.pos-btn-primary:focus {
+    background: linear-gradient(135deg, var(--pos-primary-dark), var(--pos-primary));
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(124, 108, 242, 0.4);
+}
+
+.pos-btn-primary:disabled {
+    background: var(--pos-primary);
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.pos-btn-soft {
+    background: var(--pos-primary-soft);
+    color: var(--pos-primary);
+    border: none;
+}
+
+.pos-btn-soft:hover {
+    background: var(--pos-primary);
+    color: #fff;
+}
+
+/* ===================== FORMULARIOS ===================== */
+
+.form-label {
+    font-weight: 700;
+    font-size: 0.86rem;
+    margin-bottom: 0.35rem;
+}
+
+.form-control,
+.form-select {
+    border-color: var(--pos-border);
+    background-color: #fbfbfe;
+    font-size: 0.93rem;
+    padding: 0.55rem 0.85rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--pos-primary);
+    box-shadow: 0 0 0 0.2rem rgba(124, 108, 242, 0.15);
+    background-color: #fff;
+}
+
+.input-group-text {
+    background: #fbfbfe;
+    border-color: var(--pos-border);
+    color: var(--pos-text-muted);
+}
+
+.pos-input-group .form-control {
+    border-left: none;
+}
+
+.pos-input-group .input-group-text:first-child {
+    border-right: none;
+}
+
+/* ===================== TABLAS ===================== */
+
+.pos-table {
+    background: var(--pos-surface);
+    border: 1px solid var(--pos-border);
+    border-radius: var(--pos-radius);
+    overflow: hidden;
+    box-shadow: var(--pos-shadow);
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.pos-table thead th {
+    background: var(--pos-primary-soft);
+    color: var(--pos-primary-dark);
+    font-size: 0.76rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: none;
+    padding: 0.85rem 1rem;
+    white-space: nowrap;
+}
+
+.pos-table tbody td {
+    padding: 0.8rem 1rem;
+    vertical-align: middle;
+    border-color: var(--pos-border);
+    font-size: 0.9rem;
+}
+
+.pos-table tbody tr:hover {
+    background: #faf9ff;
+}
+
+.pos-table-responsive {
+    overflow-x: auto;
+    border-radius: var(--pos-radius);
+}
+
+/* ===================== BADGES / ESTADOS ===================== */
+
+.badge {
+    font-weight: 700;
+    font-size: 0.72rem;
+    padding: 0.4em 0.75em;
+    border-radius: 999px;
+}
+
+.badge-role-administrador { background: var(--pos-accent-soft); color: #e0577f; }
+.badge-role-vendedor { background: var(--pos-primary-soft); color: var(--pos-primary-dark); }
+.badge-role-almacenero { background: var(--pos-mint-soft); color: #1eb89d; }
+.badge-stock-ok { background: var(--pos-mint-soft); color: #1eb89d; }
+.badge-stock-low { background: var(--pos-warning-soft); color: #d9912a; }
+.badge-stock-out { background: #ffe9e9; color: #e05757; }
+
+/* ===================== ALERTAS ===================== */
+
+.pos-alert {
+    border: none;
+    border-radius: 0.85rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: var(--pos-shadow);
+}
+
+/* ===================== MODAL CONFIRMACIÓN ===================== */
+
+.pos-confirm .modal-content {
+    border: none;
+    border-radius: 1.1rem;
+    box-shadow: var(--pos-shadow);
+}
+
+.pos-confirm-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--pos-warning-soft);
+    color: #e8a13c;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===================== LOGIN ===================== */
+
+.pos-guest-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 143, 171, 0.18), transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(124, 108, 242, 0.18), transparent 40%),
+        var(--pos-bg);
+}
+
+.pos-guest-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--pos-surface);
+    border: 1px solid var(--pos-border);
+    border-radius: 1.4rem;
+    box-shadow: 0 24px 60px rgba(88, 76, 180, 0.14);
+    padding: 2.25rem;
+}
+
+.pos-guest-logo {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--pos-primary), var(--pos-accent));
+    color: #fff;
+    font-size: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 26px rgba(124, 108, 242, 0.4);
+    transform: rotate(-4deg);
+}
+
+.pos-guest-body .pos-alert {
+    position: fixed;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1080;
+    width: min(92vw, 480px);
+}
+
+/* ===================== VACÍO / ESTADOS ===================== */
+
+.pos-empty {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--pos-text-muted);
+}
+
+.pos-empty i {
+    font-size: 2.6rem;
+    color: var(--pos-primary);
+    opacity: 0.6;
+}
+
+.pos-empty h6 {
+    font-weight: 800;
+    color: var(--pos-text);
+    margin-top: 0.75rem;
+}
+
+/* ===================== PAGINACIÓN ===================== */
+
+.pagination .page-item.active .page-link {
+    background: var(--pos-primary);
+    border-color: var(--pos-primary);
+    color: #fff;
+    font-weight: 700;
+}
+
+.pagination .page-link {
+    color: var(--pos-primary);
+    border-radius: 0.55rem !important;
+    margin: 0 2px;
+    border: none;
+    font-weight: 600;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 991.98px) {
+    .pos-sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+
+    .pos-sidebar.show {
+        transform: translateX(0);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .pos-sidebar-overlay.show {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(43, 38, 70, 0.45);
+        z-index: 1035;
+    }
+
+    .pos-main {
+        margin-left: 0;
+    }
+
+    .pos-content {
+        padding: 1rem;
+    }
+
+    .pos-navbar {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* ===================== MINIATURA DE PRODUCTO ===================== */
+
+.pos-product-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    background: var(--pos-primary-soft);
+    color: var(--pos-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.pos-product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===================== POS: RESULTADOS DE BÚSQUEDA ===================== */
+
+.pos-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 340px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.pos-result-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--pos-border);
+    border-radius: 0.85rem;
+    background: #fbfbfe;
+    transition: all 0.15s ease;
+}
+
+.pos-result-item:hover {
+    border-color: var(--pos-primary);
+    background: var(--pos-primary-soft);
+}
+
+.pos-result-item.disabled {
+    opacity: 0.55;
+}
+
+.pos-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.pos-result-info strong {
+    font-size: 0.9rem;
+}
+
+.pos-result-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+/* ===================== POS: CARRITO ===================== */
+
+.pos-cart-panel {
+    position: sticky;
+    top: 84px;
+}
+
+.pos-cart-table-wrap {
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.pos-cart-table thead th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--pos-text-muted);
+    background: var(--pos-bg);
+    padding: 0.5rem 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.pos-cart-table tbody td {
+    padding: 0.55rem 0.5rem;
+    border-color: var(--pos-border);
+    font-size: 0.85rem;
+}
+
+.pos-total {
+    color: var(--pos-primary-dark);
+}
+
+.pos-vuelto {
+    background: var(--pos-mint-soft);
+    color: #14a58d;
+    font-weight: 800;
+    border-radius: 0.65rem;
+    padding: 0.4rem 0.75rem;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+/* ===================== POS: ÉXITO ===================== */
+
+.pos-success-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 38, 70, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem;
+    animation: posFadeIn 0.2s ease;
+}
+
+.pos-success-card {
+    background: #fff;
+    border-radius: 1.4rem;
+    padding: 2.25rem;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+    animation: posPop 0.25s ease;
+}
+
+.pos-success-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: var(--pos-mint-soft);
+    color: #14a58d;
+    font-size: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pos-rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: var(--pos-warning-soft);
+    color: #d9912a;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Tarjeta de filtro seleccionada (inventario) */
+.pos-stat-selected {
+    border-color: var(--pos-primary);
+    box-shadow: 0 0 0 3px rgba(124, 108, 242, 0.18), var(--pos-shadow);
+}
+
+/* Pestañas de reportes */
+.pos-tabs .nav-link {
+    color: var(--pos-text);
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    background: var(--pos-surface);
+    border: 1px solid var(--pos-border);
+    margin-right: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.pos-tabs .nav-link.active {
+    background: linear-gradient(135deg, var(--pos-primary), var(--pos-primary-dark));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(124, 108, 242, 0.3);
+}
+
+/* ===================== TARJETAS DE BÚSQUEDA / FILTROS COMPACTAS ===================== */
+
+.pos-card-compact {
+    padding: 0.7rem 1rem;
+}
+
+.pos-card-compact .pos-card-title {
+    font-size: 0.92rem;
+    margin-bottom: 0.45rem;
+}
+
+.pos-card-compact .form-label {
+    font-size: 0.78rem;
+    margin-bottom: 0.15rem;
+}
+
+.pos-card-compact .form-control,
+.pos-card-compact .form-select {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.88rem;
+}
+
+.pos-card-compact .input-group-text {
+    padding: 0.4rem 0.7rem;
+}
+
+.pos-card-compact small,
+.pos-card-compact .small {
+    font-size: 0.75rem;
+}
+
+/* Resultados del POS: crecen solo cuando hay contenido */
+
+.pos-results:empty {
+    display: none;
+}
+
+.pos-results .pos-empty {
+    padding: 1.1rem 0.75rem;
+}
+
+@keyframes posFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes posPop {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+
+
